@@ -1,12 +1,14 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setGameStage, selectGameStage } from '../features/game/gameSlice.js';
-import { GameCreator } from './GameCreator.js';
-import { QuizOptionSelector } from './QuizOptionSelector.js';
-import { QuizScreen } from './QuizScreen.js';
-import { ResultsScreen } from './ResultsScreen.js'
-import { FinalResults } from './FinalResults.js';
+import { setGameStage, selectGameStage } from '../../features/game/gameSlice.js';
+import { GameCreator } from '../GameCreator/GameCreator.js';
+import { QuizOptionSelector } from '../QuizOptionSelector/QuizOptionSelector.js';
+import { QuizScreen } from '../QuizScreen/QuizScreen.js';
+import { ResultsScreen } from '../ResultsScreen/ResultsScreen.js'
+import { FinalResults } from '../FinalResults/FinalResults.js';
 
+/* This component acts as a container for whatever 'stage' the program is in.
+  For example, creating a game, playing the quiz, showing quiz results. */
 export function GameContainer() {
   const gameStage = useSelector(selectGameStage);
   const dispatch = useDispatch();
@@ -15,7 +17,7 @@ export function GameContainer() {
     switch (gameStage) {
       case 'start':
         return (
-          <button onClick={startGame}>
+          <button onClick={() => dispatch(setGameStage('creating-game'))}>
             BEGIN
           </button>
         );
@@ -42,10 +44,6 @@ export function GameContainer() {
       default:
         alert('Invalid Game Stage');
     }
-  }
-
-  const startGame = () => {
-    dispatch(setGameStage('creating-game'));
   }
 
   return (
