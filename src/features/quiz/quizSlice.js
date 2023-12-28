@@ -9,13 +9,13 @@ export const quizSlice = createSlice({
   },
   reducers: {
     setCategory: (state, action) => {
-      state.quiz.category = action.payload;
+      state.category = action.payload;
     },
     setType: (state, action) => {
-      state.quiz.type = action.payload;
+      state.type = action.payload;
     },
     setQuestions: (state, action) => {
-      state.quiz.questions = action.payload;
+      state.questions = action.payload;
     }
   }
 });

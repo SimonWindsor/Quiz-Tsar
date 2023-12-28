@@ -7,11 +7,11 @@ export const resultsSlice = createSlice({
   },
   reducers: {
     addResult: (state, action) => {
-      state.results.resultsByQuiz.push(action.payload);
+      state.resultsByQuiz.push(action.payload);
     }
   }
 });
 
 export const { addResult } = resultsSlice.actions;
-export const selectResultsByQuiz = (state) => resultsSlice.state.resultsByQuiz
+export const selectResultsByQuiz = (state) => resultsSlice.state.resultsByQuiz;
 export default resultsSlice.reducer;
