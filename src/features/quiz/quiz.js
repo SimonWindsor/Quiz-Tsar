@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { selectCategory, selectType, selectQuestions, reset } from './quizSlice.js';
+import { selectCategory, selectType, selectQuestions, resetQuiz } from './quizSlice.js';
 import './Quiz.css'
 
 export function Quiz() {
@@ -10,7 +10,7 @@ export function Quiz() {
   return(
     <div>
       You selected {useSelector(selectCategory)} and {useSelector(selectType)}
-      <button onClick={() => dispatch(reset())}>reset test</button>
+      <button onClick={() => dispatch(resetQuiz())}>reset test</button>
     </div>
   )
 }

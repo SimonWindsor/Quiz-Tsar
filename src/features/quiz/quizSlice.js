@@ -19,13 +19,13 @@ export const quizSlice = createSlice({
     setQuestions: (state, action) => {
       state.questions = action.payload;
     },
-    reset: (state, action) => {
+    resetQuiz: () => {
       return initialState;
     }
   }
 });
 
-export const { setCategory, setType, setQuestions, reset } = quizSlice.actions;
+export const { setCategory, setType, setQuestions, resetQuiz } = quizSlice.actions;
 export const selectCategory = (state) => state.quiz.category;
 export const selectType = (state) => state.quiz.type;
 export const selectQuestions = (state) => state.quiz.questions;

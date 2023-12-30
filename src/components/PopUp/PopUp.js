@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { setGameStage, togglePopUp, selectPopUpShowing } from '../../features/game/gameSlice.js';
+import { setGameStage, togglePopUp, resetGame, selectPopUpShowing } from '../../features/game/gameSlice.js';
 
 export function PopUp() {
   const popUpShowing = useSelector(selectPopUpShowing);
@@ -21,7 +21,7 @@ export function PopUp() {
           <button
             className="green-btn"
             aria-label="No Button"
-            onClick={cancelExit}
+            onClick={() => dispatch(togglePopUp())}
           >
             NO
           </button>
@@ -34,12 +34,8 @@ export function PopUp() {
   }
 
   const exitGame = () => {
-    dispatch(togglePopUp());
+    dispatch(resetGame())
     dispatch(setGameStage('start'));
-  }
-
-  const cancelExit = () => {
-    dispatch(togglePopUp());
   }
   
   return (
