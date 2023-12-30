@@ -1,12 +1,14 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
+const initialState = {
+  category: '',
+  type: '',
+  questions: {}
+}
+
 export const quizSlice = createSlice({
   name: 'quiz',
-  initialState: {
-    category: '',
-    type: '',
-    questions: {}
-  },
+  initialState,
   reducers: {
     setCategory: (state, action) => {
       state.category = action.payload;
@@ -16,11 +18,14 @@ export const quizSlice = createSlice({
     },
     setQuestions: (state, action) => {
       state.questions = action.payload;
+    },
+    reset: (state, action) => {
+      return initialState;
     }
   }
 });
 
-export const { setCategory, setType, setQuestions } = quizSlice.actions;
+export const { setCategory, setType, setQuestions, reset } = quizSlice.actions;
 export const selectCategory = (state) => state.quiz.category;
 export const selectType = (state) => state.quiz.type;
 export const selectQuestions = (state) => state.quiz.questions;
