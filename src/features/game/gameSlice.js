@@ -7,6 +7,7 @@ export const gameSlice = createSlice({
     numQuizzes: 5,
     numQuestions: 10,
     difficulty: '',
+    popUpShowing: false
   },
   reducers: {
     setGameStage: (state, action) => {
@@ -20,13 +21,17 @@ export const gameSlice = createSlice({
     },
     setDifficulty: (state, action) => {
       state.difficulty = action.payload;
+    },
+    togglePopUp: (state, action) => {
+      state.popUpShowing = !state.popUpShowing;
     }
   }
 });
 
-export const { setGameStage, setNumQuizzes, setNumQuestions, setDifficulty } = gameSlice.actions;
+export const { setGameStage, setNumQuizzes, setNumQuestions, setDifficulty, togglePopUp } = gameSlice.actions;
 export const selectGameStage = (state) => state.game.gameStage; 
 export const selectNumQuizzes = (state) => state.game.numQuizzes;
 export const selectNumQuestions = (state) => state.game.numQuestions;
 export const selectDifficulty = (state) => state.game.difficulty;
+export const selectPopUpShowing = (state) => state.game.popUpShowing;
 export default gameSlice.reducer;

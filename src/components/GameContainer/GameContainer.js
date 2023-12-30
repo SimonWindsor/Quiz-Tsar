@@ -3,9 +3,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setGameStage, selectGameStage } from '../../features/game/gameSlice.js';
 import { GameCreator } from '../GameCreator/GameCreator.js';
 import { QuizOptionSelector } from '../QuizOptionSelector/QuizOptionSelector.js';
-import { QuizScreen } from '../QuizScreen/QuizScreen.js';
+import { Quiz } from '../../features/quiz/Quiz.js';
 import { ResultsScreen } from '../ResultsScreen/ResultsScreen.js'
 import { FinalResults } from '../FinalResults/FinalResults.js';
+import { PopUp } from '../PopUp/PopUp.js';
 
 /* This component acts as a container for whatever 'stage' the program is in.
   For example, creating a game, playing the quiz, showing quiz results. */
@@ -17,7 +18,10 @@ export function GameContainer() {
     switch (gameStage) {
       case 'start':
         return (
-          <button onClick={() => dispatch(setGameStage('creating-game'))}>
+          <button
+            aria-label="Begin Playing"
+            onClick={() => dispatch(setGameStage('creating-game'))}
+          >
             BEGIN
           </button>
         );
@@ -31,7 +35,7 @@ export function GameContainer() {
         );
       case 'playing-quiz':
         return (
-          <QuizScreen />
+          <Quiz />
         );
       case 'showing-quiz-results':
         return (
@@ -47,8 +51,9 @@ export function GameContainer() {
   }
 
   return (
-    currentStage()
+    <div>
+      {currentStage()}
+      <PopUp/>
+    </div>
   );
 }
-
-//{onClick={dispatch(setGameStage('creating-game'))}}

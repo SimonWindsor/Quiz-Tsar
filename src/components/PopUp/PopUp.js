@@ -1,9 +1,48 @@
 import React from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { setGameStage, togglePopUp, selectPopUpShowing } from '../../features/game/gameSlice.js';
 
 export function PopUp() {
-  return (
-    <div>
+  const popUpShowing = useSelector(selectPopUpShowing);
+  const dispatch = useDispatch();
 
-    </div>
+  const getPopUp = () => {
+    if (popUpShowing) {
+      return (
+        <div>
+          <h3>Are you sure you want to exit?</h3>
+          <button
+            className="red-btn"
+            aria-label="Yes Button"
+            onClick={exitGame}
+          >
+            YES
+          </button>
+          <button
+            className="green-btn"
+            aria-label="No Button"
+            onClick={cancelExit}
+          >
+            NO
+          </button>
+        </div>
+      );
+    }
+    else {
+      return;
+    }
+  }
+
+  const exitGame = () => {
+    dispatch(togglePopUp());
+    dispatch(setGameStage('start'));
+  }
+
+  const cancelExit = () => {
+    dispatch(togglePopUp());
+  }
+  
+  return (
+    getPopUp()
   );
 }

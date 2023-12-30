@@ -20,7 +20,7 @@ export const quizSlice = createSlice({
   }
 });
 
-export const { awtCategory, setType, setQuestions } = quizSlice.actions;
+export const { setCategory, setType, setQuestions } = quizSlice.actions;
 export const selectCategory = (state) => state.quiz.category;
 export const selectType = (state) => state.quiz.type;
 export const selectQuestions = (state) => state.quiz.questions;

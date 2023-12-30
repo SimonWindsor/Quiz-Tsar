@@ -5,6 +5,7 @@ import {
   setNumQuizzes,
   setNumQuestions, 
   setDifficulty,
+  togglePopUp,
   selectNumQuizzes,
   selectNumQuestions,
 } from '../../features/game/gameSlice.js';
@@ -15,7 +16,7 @@ export function GameCreator() {
   return (
     <div>
       <h2>Start a Game</h2>
-      <label for="num-quizzes">
+      <label htmlFor="num-quizzes">
         Quizzes per Game:
       </label>
       <input
@@ -27,7 +28,7 @@ export function GameCreator() {
         value={useSelector(selectNumQuizzes)}
         onChange={(e) => dispatch(setNumQuizzes(e.target.value))}
       />
-      <label for="num-questions">
+      <label htmlFor="num-questions">
         Questions per Quiz:
       </label>
       <input
@@ -39,7 +40,7 @@ export function GameCreator() {
         value={useSelector(selectNumQuestions)}
         onChange={(e) => dispatch(setNumQuestions(e.target.value))}
       />
-      <label for="difficulty">
+      <label htmlFor="difficulty">
         Difficulty:
       </label>
       <select id="difficulty" onChange={(e) => dispatch(setDifficulty(e.target.value))}>
@@ -49,12 +50,17 @@ export function GameCreator() {
         <option value="hard">Hard</option>
       </select>
       <button
-        className="exit-btn"
-        onClick={() => dispatch(setGameStage('start'))}
+        className="red-btn"
+        aria-label="Exit Button"
+        onClick={() => dispatch(togglePopUp())}
       >
         EXIT
       </button>
-      <button onClick={() => dispatch(setGameStage('selecting-quiz'))}>
+      <button
+        className="green-btn"
+        aria-label="Play Button"
+        onClick={() => dispatch(setGameStage('selecting-quiz'))}
+      >
         PLAY
       </button>
     </div>
