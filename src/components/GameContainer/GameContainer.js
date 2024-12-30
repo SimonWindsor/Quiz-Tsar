@@ -2,10 +2,8 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setGameStage, selectGameStage } from '../../features/game/gameSlice.js';
 import { GameCreator } from '../GameCreator/GameCreator.js';
-import { QuizOptionSelector } from '../QuizOptionSelector/QuizOptionSelector.js';
 import { Quiz } from '../../features/quiz/Quiz.js';
 import { ResultsScreen } from '../ResultsScreen/ResultsScreen.js'
-import { FinalResults } from '../FinalResults/FinalResults.js';
 import { PopUp } from '../PopUp/PopUp.js';
 
 /* This component acts as a container for whatever 'stage' the program is in.
@@ -14,8 +12,10 @@ export function GameContainer() {
   const gameStage = useSelector(selectGameStage);
   const dispatch = useDispatch();
   
+  /* Determines what to render based on different 'stages' off the app, including selecting quiz options, or playing */
   const currentStage = () => {
     switch (gameStage) {
+      /* When app opens or resets */
       case 'start':
         return (
           <button
@@ -29,10 +29,6 @@ export function GameContainer() {
         return (
           <GameCreator />
         );
-      case 'selecting-quiz':
-        return (
-          <QuizOptionSelector />
-        );
       case 'playing-quiz':
         return (
           <Quiz />
@@ -40,10 +36,6 @@ export function GameContainer() {
       case 'showing-quiz-results':
         return (
           <ResultsScreen />
-        );
-      case 'showing-final-results':
-        return (
-          <FinalResults />
         );
       default:
         alert('Invalid Game Stage');
@@ -53,7 +45,7 @@ export function GameContainer() {
   return (
     <div>
       {currentStage()}
-      <PopUp/>
+      <PopUp/> {/* shows a popup only if popUpShowing in gameSlice is true */}
     </div>
   );
 }

@@ -2,11 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   gameStage: 'start',
-  numQuizzes: 5,
   numQuestions: 10,
   difficulty: '',
-  currentGame: 0,
-  resultsByQuiz: [],
+  category: '',
+  type: '',
+  score: 0,
   popUpShowing: false
 };
 
@@ -17,45 +17,47 @@ export const gameSlice = createSlice({
     setGameStage: (state, action) => {
       state.gameStage = action.payload;
     },
-    setNumQuizzes: (state, action) => {
-      state.numQuizzes = action.payload;
-    },
     setNumQuestions: (state, action) => {
       state.numQuestions = action.payload;
     },
     setDifficulty: (state, action) => {
       state.difficulty = action.payload;
     },
-    incrementCurrentGame: (state) => {
-      state.currentGame++;
+    setCategory: (state, action) => {
+      state.category = action.payload;
     },
-    addResult: (state, action) => {
-      state.resultsByQuiz.push(action.payload);
+    setType: (state,action) => { 
+      state.type = action.payload;
     },
-    togglePopUp: (state, action) => {
+    increaseScore: (state) => {
+      state.score++;
+    },
+    togglePopUp: (state) => {
       state.popUpShowing = !state.popUpShowing;
     },
-    resetGame: () => {
-      return initialState;
+    resetGame: (state) => {
+      Object.assign(state, initialState);
     }
   }
 });
 
 export const {
   setGameStage, 
-  setNumQuizzes, 
   setNumQuestions, 
-  setDifficulty, 
-  incrementCurrentGame,
-  addResult,
+  setDifficulty,
+  setCategory,
+  setType,
+  increaseScore,
   togglePopUp,
   resetGame
 } = gameSlice.actions;
-export const selectGameStage = (state) => state.game.gameStage; 
-export const selectNumQuizzes = (state) => state.game.numQuizzes;
+
+export const selectGameStage = (state) => state.game.gameStage;
 export const selectNumQuestions = (state) => state.game.numQuestions;
 export const selectDifficulty = (state) => state.game.difficulty;
-export const selectCurrentGame = (state)=> state.game.currentGame;
-export const selectResultsByQuiz = (state) => state.game.resultsByQuiz;
+export const selectCategory = (state) => state.game.category;
+export const selectType = (state) => state.game.type;
+export const selectScore = (state) => state.game.score
 export const selectPopUpShowing = (state) => state.game.popUpShowing;
+
 export default gameSlice.reducer;

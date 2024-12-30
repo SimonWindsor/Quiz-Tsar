@@ -1,6 +1,12 @@
 import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { setGameStage, togglePopUp, resetGame, selectPopUpShowing } from '../../features/game/gameSlice.js';
+import {
+  setGameStage, 
+  togglePopUp, 
+  resetGame,
+  selectPopUpShowing
+} from '../../features/game/gameSlice.js';
+import { resetQuiz } from "../../features/quiz/quizSlice.js";
 
 export function PopUp() {
   const popUpShowing = useSelector(selectPopUpShowing);
@@ -14,7 +20,10 @@ export function PopUp() {
           <button
             className="red-btn"
             aria-label="Yes Button"
-            onClick={exitGame}
+            onClick={() => {
+              exitGame();
+              dispatch(togglePopUp());
+            }}
           >
             YES
           </button>
@@ -34,7 +43,8 @@ export function PopUp() {
   }
 
   const exitGame = () => {
-    dispatch(resetGame())
+    dispatch(resetGame());
+    dispatch(resetQuiz());
     dispatch(setGameStage('start'));
   }
   
