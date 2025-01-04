@@ -4,7 +4,7 @@ import { setGameStage, selectGameStage } from '../../features/game/gameSlice.js'
 import { GameCreator } from '../GameCreator/GameCreator.js';
 import { Quiz } from '../../features/quiz/Quiz.js';
 import { ResultsScreen } from '../ResultsScreen/ResultsScreen.js'
-import { PopUp } from '../PopUp/PopUp.js';
+import { PopUp } from '../../features/popUp/PopUp.js'
 
 /* This component acts as a container for whatever 'stage' the program is in.
   For example, creating a game, playing the quiz, showing quiz results. */

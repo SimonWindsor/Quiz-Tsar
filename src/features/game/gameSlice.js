@@ -6,8 +6,7 @@ const initialState = {
   difficulty: '',
   category: '',
   type: '',
-  score: 0,
-  popUpShowing: false
+  score: 0
 };
 
 export const gameSlice = createSlice({
@@ -48,7 +47,6 @@ export const {
   setCategory,
   setType,
   increaseScore,
-  togglePopUp,
   resetGame
 } = gameSlice.actions;
 
@@ -58,6 +56,5 @@ export const selectDifficulty = (state) => state.game.difficulty;
 export const selectCategory = (state) => state.game.category;
 export const selectType = (state) => state.game.type;
 export const selectScore = (state) => state.game.score
-export const selectPopUpShowing = (state) => state.game.popUpShowing;
 
 export default gameSlice.reducer;
