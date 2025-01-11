@@ -68,6 +68,12 @@ export function PopUp() {
             </button>
           </div>
         );
+      default:
+        return (
+          <div className="default popup">
+            <h3>Unknown PopUp Type</h3>
+          </div>
+        );
     }
   }
 
