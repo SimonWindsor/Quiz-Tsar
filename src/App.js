@@ -6,7 +6,7 @@ import './App.css';
 function App() {
   return (
     <div id="app">
-      <h1>Quiz-Czar</h1>
+      <h1>Quiz-Tsar</h1>
       <GameContainer />
     </div>
   );
