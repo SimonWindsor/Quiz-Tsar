@@ -43,6 +43,8 @@ h1 {
   height: 100%;
   transform: translateX(-50%);
   border-radius: 50%;
+  pointer-events: none;
+  object-fit: cover;
 }
 
 #begin-btn {
@@ -71,4 +73,10 @@ h1 {
   text-shadow: none;
 }
 
+@media not (orientation: portrait) {
+  #begin-btn {
+    height: 3rem;
+    bottom: 1rem;
+  }
+}
 

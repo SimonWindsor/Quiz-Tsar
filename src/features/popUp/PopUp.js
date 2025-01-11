@@ -6,6 +6,8 @@ import { selectPopUpType, hidePopUp, selectPopUpToggle } from "./popUpSlice.js";
 
 import './PopUp.css';
 
+import arrowPicture from '../../assets/arrow.png';
+
 export function PopUp() {
   const popUpType = useSelector(selectPopUpType);
   const popUpShowing = useSelector(selectPopUpToggle);
@@ -51,7 +53,7 @@ export function PopUp() {
               aria-label='continue'
               onClick={() => afterAnswered()}
             >
-              →
+              <img className="arrow" alt="continue" src={arrowPicture} />
             </button>
           </div>
         );
@@ -64,7 +66,7 @@ export function PopUp() {
               aria-label='continue'
               onClick={() => afterAnswered()}
             >
-              →
+              <img className="arrow" alt="continue" src={arrowPicture} />
             </button>
           </div>
         );

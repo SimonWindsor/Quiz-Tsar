@@ -24,3 +24,7 @@
 .correct button, .incorrect button {
   margin: auto;
 }
+
+.arrow {
+  height: 90%;
+}

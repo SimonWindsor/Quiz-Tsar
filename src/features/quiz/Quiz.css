@@ -8,6 +8,7 @@
 
 #question {
   font-size: 1rem;
+  background-color: #F8F8F0;
 }
 
 #answers {
@@ -22,16 +23,34 @@
 
 .answer-btn {
   width: 40%;
-  height: 4rem;
+  min-height: 4rem;
+  height: fit-content;
   margin-top: 1rem;
   font-size: clamp(15px, 0.5rem, 30px);
   border: none;
+  box-shadow: 5px 5px #5A2D9B;
+}
+
+.answer-btn:active {
+  transform: translate(5px, 5px);
+  box-shadow: none;
 }
 
 #progress-and-exit {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  width: 80%;
+  width: 90%;
   margin: auto;
+}
+
+#progress {
+  font-size: 0.8rem;
+  padding: 0;
+}
+
+@media not (orientation: portrait) {
+  .answer-btn {
+    min-height: 1.2rem;
+  }
 }

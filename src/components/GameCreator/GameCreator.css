@@ -49,8 +49,16 @@ select option:not(:checked) {
   background-color: #D4AF37;
 }
 
+#control-btns button {
+  height: 3rem;
+}
+
 @media not (orientation: portrait) {
   #game-creator {
     max-width: 70%;
+  }
+
+  #control-btns button {
+    height: 2rem;
   }
 }

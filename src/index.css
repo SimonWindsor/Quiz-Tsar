@@ -10,12 +10,13 @@ body, html {
   font-size: clamp(8px, 4vw, 50px);
   margin: 0;
   font-family: red-october, Arial, Helvetica, sans-serif;
-  color: #0A0A0A;
+  color: hsl(0, 0%, 4%);
+  overflow: hidden;
 }
 
 button {
   font-size: 1rem;
-  height: 1.5rem;
+  height: 2rem;
   border-radius: 5px;
 }
 
@@ -27,7 +28,12 @@ button:hover {
   background-color: #F8F8F0;
 }
 
-/* code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-} */
+@media not (orientation: portrait) {
+  html {
+    font-size: clamp(8px, 2.5vw, 60px);
+  }
+
+  button {
+    height: 1.5rem;
+  }
+}
