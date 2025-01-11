@@ -4,6 +4,8 @@ import { setGameStage, resetGame, selectNumQuestions } from '../game/gameSlice.j
 import { resetQuiz, nextQuestion, selectCurrentQuestion } from "../quiz/quizSlice.js";
 import { selectPopUpType, hidePopUp, selectPopUpToggle } from "./popUpSlice.js";
 
+import './PopUp.css';
+
 export function PopUp() {
   const popUpType = useSelector(selectPopUpType);
   const popUpShowing = useSelector(selectPopUpToggle);
@@ -14,53 +16,55 @@ export function PopUp() {
     if (!popUpShowing) {
       return;
     }
-    switch (popUpType) {
+    switch (popUpType.toLowerCase()) {
       case 'exit':
         return (
-          <div>
+          <div className="exit popup">
             <h3>Are you sure you want to exit?</h3>
-            <button
-              className="red-btn"
-              aria-label="Yes Button"
-              onClick={() => {
-                exitGame();
-                dispatch(hidePopUp());
-              }}
-            >
-              YES
-            </button>
-            <button
-              className="green-btn"
-              aria-label="No Button"
-              onClick={() => dispatch(hidePopUp())}
-            >
-              NO
-            </button>
+            <span>
+              <button
+                className="red-btn"
+                aria-label="Yes Button"
+                onClick={() => {
+                  exitGame();
+                  dispatch(hidePopUp());
+                }}
+              >
+                YES
+              </button>
+              <button
+                className="green-btn"
+                aria-label="No Button"
+                onClick={() => dispatch(hidePopUp())}
+              >
+                NO
+              </button>
+            </span>
           </div>
         );
       case 'correct':
         return (
-          <div>
+          <div className="correct popup">
             <h3>Correct!</h3>
             <button
               className='arrow-btn'
               aria-label='continue'
               onClick={() => afterAnswered()}
             >
-              Continue
+              →
             </button>
           </div>
         );
       case 'incorrect':
         return (
-          <div>
+          <div className="incorrect popup">
             <h3>Incorrect!</h3>
             <button
               className='arrow-btn'
               aria-label='continue'
               onClick={() => afterAnswered()}
             >
-              Continue
+              →
             </button>
           </div>
         );

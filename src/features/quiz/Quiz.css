@@ -1,0 +1,37 @@
+#quiz {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100vh - 5rem);
+}
+
+#question {
+  font-size: 1rem;
+}
+
+#answers {
+  position: relative;
+  bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  flex-wrap: wrap;
+  width: 80%;
+}
+
+.answer-btn {
+  width: 40%;
+  height: 4rem;
+  margin-top: 1rem;
+  font-size: clamp(15px, 0.5rem, 30px);
+  border: none;
+}
+
+#progress-and-exit {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 80%;
+  margin: auto;
+}

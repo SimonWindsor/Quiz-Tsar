@@ -61,21 +61,23 @@ export function Quiz() {
   }
 
   return (
-    <div>
-      <h2>{`Question ${currentQuestion + 1}: ${decode(question.question)}`}</h2>
-      {showAnswerOptions()}
-      <button
-        className="exit-btn"
-        aria-label="Exit Button"
-        onClick={() => {
-          dispatch(setPopUpType('exit'));
-        }}
-      >
-        EXIT
-      </button>
-      <div className="progress">
-        <h3>{`Current Question: ${currentQuestion + 1}/${totalQuestions}`}</h3>
-      </div>
+    <div id="quiz">
+      <h2 id="question">{`Question ${currentQuestion + 1}: ${decode(question.question)}`}</h2>
+      <div id="answers">{showAnswerOptions()}</div>
+      <span id="progress-and-exit">
+        <div id="progress">
+          <h3>{`Current Question: ${currentQuestion + 1}/${totalQuestions}`}</h3>
+        </div>
+        <button
+          className="exit-btn"
+          aria-label="Exit Button"
+          onClick={() => {
+            dispatch(setPopUpType('exit'));
+          }}
+        >
+          EXIT
+        </button>
+      </span>
     </div>
   )
 }

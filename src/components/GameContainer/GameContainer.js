@@ -19,6 +19,7 @@ export function GameContainer() {
       case 'start':
         return (
           <button
+            id="begin-btn"
             aria-label="Begin Playing"
             onClick={() => dispatch(setGameStage('creating-game'))}
           >
@@ -43,7 +44,7 @@ export function GameContainer() {
   }
 
   return (
-    <div>
+    <div id="game-container">
       {currentStage()}
       <PopUp/> {/* shows a popup only if popUpShowing in gameSlice is true */}
     </div>

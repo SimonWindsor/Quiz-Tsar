@@ -7,16 +7,18 @@ import {
   resetGame } from "../../features/game/gameSlice";
 import { resetQuiz } from "../../features/quiz/quizSlice";
 
+import './ResultsScreen.css';
+
 export function ResultsScreen () {
   const dispatch = useDispatch();
   const score = useSelector(selectScore);
   const numQuestions = useSelector(selectNumQuestions);
 
   return (
-    <div>
-      <h3>Score for this Quiz: {score}/{numQuestions}</h3>
+    <div id="results-screen">
+      <h2>Score for this Quiz: {score}/{numQuestions}</h2>
       <button
-        className="green-btn"
+        id="finish-btn"
         aria-label="Finish Button"
         onClick={() => {
           dispatch(resetGame());

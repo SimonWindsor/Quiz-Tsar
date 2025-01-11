@@ -1,0 +1,56 @@
+#game-creator {
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+h2 {
+  text-align: center;
+}
+
+#game-creator > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+#game-creator > span {
+  display: flex;
+  justify-content: space-around;
+}
+
+label {
+  font-size: clamp(16px, 1rem, 60px);
+}
+
+input, select, button {
+  width: clamp(60px, 30%, 300px);
+  font-size: clamp(16px, 0.5rem, 40px);
+  background-color: #D4AF37;
+}
+
+input[type="number"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+select option {
+  background-color: #F8F8F0;
+}
+
+select option:not(:checked) {
+  background-color: #D4AF37;
+}
+
+@media not (orientation: portrait) {
+  #game-creator {
+    max-width: 70%;
+  }
+}
