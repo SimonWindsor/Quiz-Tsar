@@ -6,6 +6,8 @@ import { Quiz } from '../../features/quiz/Quiz.js';
 import { ResultsScreen } from '../ResultsScreen/ResultsScreen.js'
 import { PopUp } from '../../features/popUp/PopUp.js'
 
+import tsarPicture from '../../assets/tsar.webp';
+
 /* This component acts as a container for whatever 'stage' the program is in.
   For example, creating a game, playing the quiz, showing quiz results. */
 export function GameContainer() {
@@ -18,13 +20,16 @@ export function GameContainer() {
       /* When app opens or resets */
       case 'start':
         return (
-          <button
-            id="begin-btn"
-            aria-label="Begin Playing"
-            onClick={() => dispatch(setGameStage('creating-game'))}
-          >
-            BEGIN
-          </button>
+          <div id="start">
+            <img id="tsar" alt="Traditional Russian Tsar" src={tsarPicture}/>
+            <button
+              id="begin-btn"
+              aria-label="Begin Playing"
+              onClick={() => dispatch(setGameStage('creating-game'))}
+            >
+              BEGIN
+            </button>
+          </div>
         );
       case 'creating-game':
         return (
