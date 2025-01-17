@@ -24,21 +24,27 @@ label {
   font-size: clamp(16px, 1rem, 60px);
 }
 
-input, select, button {
+input, select, button, #numQuestionSelector {
   width: clamp(60px, 30%, 300px);
   font-size: clamp(16px, 0.5rem, 40px);
   background-color: #D4AF37;
+  border: ridge #F8F8F0;
 }
 
-input[type="number"] {
-  -webkit-appearance: textfield;
-  -moz-appearance: textfield;
-  appearance: textfield;
+#numQuestionSelector {
+  display: flex;
+  justify-content: space-between;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
+.set-number-btn {
+  height: 100%;
+  border: none;
+  border-radius: 0;
+}
+
+#num-questions {
+  text-align: center;
+  border: none;
 }
 
 select option {

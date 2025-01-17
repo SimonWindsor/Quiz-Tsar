@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   setGameStage,
   setNumQuestions, 
+  decreaseNumQuestions,
+  increaseNumQuestions,
   setDifficulty,
   setCategory,
   setType,
@@ -22,6 +24,7 @@ export function GameCreator() {
   const dispatch = useDispatch();
 
   const numQuestions = useSelector(selectNumQuestions);
+
   const difficulty = useSelector(selectDifficulty);
   const category = useSelector(selectCategory);
   const type = useSelector(selectType);
@@ -34,15 +37,25 @@ export function GameCreator() {
         <label htmlFor="num-questions">
           Number of Questions:
         </label>
+        <span id="numQuestionSelector">
+          <button
+            className="set-number-btn"
+            onClick={() => dispatch(decreaseNumQuestions())}
+          >
+            -
+          </button>
           <input
             id="num-questions"
-            type="number"
-            min="1"
-            max="50"
-            step="1"
             value={numQuestions}
             onChange={(e) => dispatch(setNumQuestions(e.target.value))}
           />
+          <button
+            className="set-number-btn"
+            onClick={() => dispatch(increaseNumQuestions())}
+          >
+            +
+          </button>
+        </span>
       </div>
       <div>
         <label htmlFor="difficulty">

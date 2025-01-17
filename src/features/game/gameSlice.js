@@ -17,13 +17,21 @@ export const gameSlice = createSlice({
       state.gameStage = action.payload;
     },
     setNumQuestions: (state, action) => {
-      if (action.payload > 100) {
-        state.numQuestions = 100;
+      if (action.payload > 50) {
+        state.numQuestions = 50;
       } else if (action.payload < 1) {
         state.numQuestions = 1
       } else {
         state.numQuestions = action.payload;
       }
+    },
+    decreaseNumQuestions: (state) => {
+      if (state.numQuestions > 1)
+        state.numQuestions--;
+    },
+    increaseNumQuestions: (state) => {
+      if (state.numQuestions < 50)
+        state.numQuestions++;
     },
     setDifficulty: (state, action) => {
       state.difficulty = action.payload;
@@ -48,7 +56,9 @@ export const gameSlice = createSlice({
 
 export const {
   setGameStage, 
-  setNumQuestions, 
+  setNumQuestions,
+  decreaseNumQuestions,
+  increaseNumQuestions, 
   setDifficulty,
   setCategory,
   setType,
