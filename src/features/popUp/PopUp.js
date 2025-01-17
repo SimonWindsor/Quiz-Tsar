@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { setGameStage, resetGame, selectNumQuestions } from '../game/gameSlice.js';
-import { resetQuiz, nextQuestion, selectCurrentQuestion } from "../quiz/quizSlice.js";
+import { resetQuiz, nextQuestion, resetStatusAndError, selectCurrentQuestion, selectError } from "../quiz/quizSlice.js";
 import { selectPopUpType, hidePopUp, selectPopUpToggle } from "./popUpSlice.js";
 
 import './PopUp.css';
@@ -12,6 +12,7 @@ export function PopUp() {
   const popUpType = useSelector(selectPopUpType);
   const popUpShowing = useSelector(selectPopUpToggle);
   const finalQuestion = useSelector(selectCurrentQuestion) === useSelector(selectNumQuestions) - 1;
+  const error = useSelector(selectError);
   const dispatch = useDispatch();
 
   const getPopUp = () => {
@@ -62,11 +63,28 @@ export function PopUp() {
           <div className="incorrect popup">
             <h3>Incorrect!</h3>
             <button
-              className='arrow-btn'
-              aria-label='continue'
+              className="arrow-btn"
+              aria-label="continue"
               onClick={() => afterAnswered()}
             >
               <img className="arrow" alt="continue" src={arrowPicture} />
+            </button>
+          </div>
+        );
+      case 'error':
+        return (
+          <div className="error popup">
+            <h3>Error:</h3>
+            <h4>{error}</h4>
+            <button
+              className="back-arrow-btn"
+              aria-label="go back"
+              onClick={() => {
+                dispatch(resetStatusAndError());
+                dispatch(hidePopUp());
+              }}
+            >
+              <img className="back arrow" alt="go back" src={arrowPicture} />
             </button>
           </div>
         );

@@ -11,10 +11,12 @@ import {
   selectCategory,
   selectType
 } from '../../features/game/gameSlice.js';
-import { getQuestions } from '../../features/quiz/quizSlice.js'
+import { getQuestions, selectStatus } from '../../features/quiz/quizSlice.js'
 import { setPopUpType } from "../../features/popUp/popUpSlice.js";
 
 import './GameCreator.css';
+
+import loadingGIF from '../../assets/load.gif';
 
 export function GameCreator() {
   const dispatch = useDispatch();
@@ -23,6 +25,7 @@ export function GameCreator() {
   const difficulty = useSelector(selectDifficulty);
   const category = useSelector(selectCategory);
   const type = useSelector(selectType);
+  const status = useSelector(selectStatus);
 
   return ( 
     <div id="game-creator">
@@ -99,8 +102,10 @@ export function GameCreator() {
           aria-label="Play Button"
           // async/await are used so that quiz will not begin unless question acquisition is complete
           onClick={async () => {
-            await dispatch(getQuestions({ numQuestions, difficulty, category, type }));
-            dispatch(setGameStage('playing-quiz'));
+            dispatch(getQuestions({ numQuestions, difficulty, category, type }))
+              .unwrap()
+              .then(() => dispatch(setGameStage('playing-quiz')))
+              .catch(() => dispatch(setPopUpType('error')));
           }}
         >
           PLAY
@@ -114,6 +119,8 @@ export function GameCreator() {
           EXIT
         </button>
       </span>
+      {/* Below shows loading gif only if status is loading */}
+      {status === 'loading' && (<img id="loading" src={loadingGIF} alt="loading" />)}
     </div>
   );
 }

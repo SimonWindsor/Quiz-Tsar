@@ -40,6 +40,7 @@ export function Quiz() {
     return reorderedAnswers.map(answer => {
       return (
         <button
+          key={'insert later'}
           className="answer-btn"
           aria-label={decode(answer)}
           onClick={() => handleAnswer(answer)}

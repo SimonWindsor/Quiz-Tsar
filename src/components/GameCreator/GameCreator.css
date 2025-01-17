@@ -53,6 +53,16 @@ select option:not(:checked) {
   height: 3rem;
 }
 
+#loading {
+  z-index: 99; /* One less than a popUp */
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 150px;
+  height: 150px;
+}
+
 @media not (orientation: portrait) {
   #game-creator {
     max-width: 70%;
