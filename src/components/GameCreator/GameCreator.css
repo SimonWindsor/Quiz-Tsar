@@ -38,6 +38,7 @@ input, select, button, #numQuestionSelector {
 
 .set-number-btn {
   height: 100%;
+  width: 40%;
   border: none;
   border-radius: 0;
 }
@@ -45,6 +46,7 @@ input, select, button, #numQuestionSelector {
 #num-questions {
   text-align: center;
   border: none;
+  width: 20%;
 }
 
 select option {

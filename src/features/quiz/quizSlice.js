@@ -29,10 +29,15 @@ export const getQuestions = createAsyncThunk (
       category,
       type
     }).toString()}`;
+
+    // For handling timeout if no response after 30 seconds
+    const abortControl = new AbortController();
+    const timeoutControl = setTimeout(() => abortControl.abort(), 30000);
     
     try {
-      const response = await fetch(APIrequest);
+      const response = await fetch(APIrequest, { signal: abortControl.signal });
       const jsonResponse =  await response.json();
+      clearTimeout(timeoutControl); // If valid response timeout can end
       
       if (jsonResponse.response_code !== 0) {
         console.error(`Response code: ${jsonResponse.response_code}`);
@@ -41,6 +46,11 @@ export const getQuestions = createAsyncThunk (
 
       return jsonResponse.results;
     } catch (error) {
+      //
+      if (error.name === 'AbortError') {
+        return rejectWithValue('Timeout has occurred')
+      }
+
       console.error(error);
       return rejectWithValue(error.message);
     }

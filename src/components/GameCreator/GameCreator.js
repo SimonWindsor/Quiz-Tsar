@@ -113,8 +113,7 @@ export function GameCreator() {
       <span id="control-btns">
         <button
           aria-label="Play Button"
-          // async/await are used so that quiz will not begin unless question acquisition is complete
-          onClick={async () => {
+          onClick={() => {
             dispatch(getQuestions({ numQuestions, difficulty, category, type }))
               .unwrap()
               .then(() => dispatch(setGameStage('playing-quiz')))
