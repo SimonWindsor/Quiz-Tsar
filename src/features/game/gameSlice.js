@@ -5,10 +5,10 @@ const initialState = {
   numQuestions: 10,
   difficulty: '',
   category: '',
-  type: '',
-  score: 0
+  type: ''
 };
 
+// Handles game options
 export const gameSlice = createSlice({
   name: 'game',
   initialState,
@@ -42,9 +42,6 @@ export const gameSlice = createSlice({
     setType: (state,action) => { 
       state.type = action.payload;
     },
-    increaseScore: (state) => {
-      state.score++;
-    },
     togglePopUp: (state) => {
       state.popUpShowing = !state.popUpShowing;
     },
@@ -62,7 +59,6 @@ export const {
   setDifficulty,
   setCategory,
   setType,
-  increaseScore,
   resetGame
 } = gameSlice.actions;
 
@@ -71,6 +67,5 @@ export const selectNumQuestions = (state) => state.game.numQuestions;
 export const selectDifficulty = (state) => state.game.difficulty;
 export const selectCategory = (state) => state.game.category;
 export const selectType = (state) => state.game.type;
-export const selectScore = (state) => state.game.score
 
 export default gameSlice.reducer;

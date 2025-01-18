@@ -17,7 +17,7 @@ export function GameContainer() {
   /* Determines what to render based on different 'stages' off the app, including selecting quiz options, or playing */
   const currentStage = () => {
     switch (gameStage) {
-      /* When app opens or resets */
+      // When app opens or resets. This is the opening screen.
       case 'start':
         return (
           <div id="start">
@@ -31,18 +31,22 @@ export function GameContainer() {
             </button>
           </div>
         );
+      // The game options select screen.
       case 'creating-game':
         return (
           <GameCreator />
         );
+      // The playable quiz.
       case 'playing-quiz':
         return (
           <Quiz />
         );
+      // Final score is displayed.
       case 'showing-quiz-results':
         return (
           <ResultsScreen />
         );
+      // Something is wrong if this alert shows.
       default:
         alert('Invalid Game Stage');
     }
@@ -50,8 +54,8 @@ export function GameContainer() {
 
   return (
     <div id="game-container">
-      {currentStage()}
-      <PopUp/> {/* shows a popup only if popUpShowing in gameSlice is true */}
+      {currentStage() /* The current stage will render the relevant component. */}
+      <PopUp/> {/* shows a popup only if popUpShowing in gameSlice is true. */}
     </div>
   );
 }

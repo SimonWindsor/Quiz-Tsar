@@ -20,6 +20,7 @@ import './GameCreator.css';
 
 import loadingGIF from '../../assets/load.gif';
 
+// A menu for selection game options.
 export function GameCreator() {
   const dispatch = useDispatch();
 

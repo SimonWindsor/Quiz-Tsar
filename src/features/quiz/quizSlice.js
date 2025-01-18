@@ -3,6 +3,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 const initialState = {
   questions: [],
   currentQuestion: 0,
+  score: 0,
   status: '',
   error: ''
 }
@@ -20,6 +21,7 @@ const responseCodeMessages = [
   'Rate limit reached - You are probably starting new games too quickly'
 ]
 
+// Async thunk for handling Open Trivia Database API and obtainning trivia questions.
 export const getQuestions = createAsyncThunk (
   'quiz/getQuestions',
   async ({ numQuestions, difficulty, category, type }, { rejectWithValue }) => {
@@ -30,14 +32,14 @@ export const getQuestions = createAsyncThunk (
       type
     }).toString()}`;
 
-    // For handling timeout if no response after 30 seconds
+    // For handling timeout if no response after 30 seconds.
     const abortControl = new AbortController();
     const timeoutControl = setTimeout(() => abortControl.abort(), 30000);
     
     try {
       const response = await fetch(APIrequest, { signal: abortControl.signal });
       const jsonResponse =  await response.json();
-      clearTimeout(timeoutControl); // If valid response timeout can end
+      clearTimeout(timeoutControl); // If valid response timeout can end.
       
       if (jsonResponse.response_code !== 0) {
         console.error(`Response code: ${jsonResponse.response_code}`);
@@ -57,12 +59,16 @@ export const getQuestions = createAsyncThunk (
   }
 )
 
+// For handling question fetching from API and game logic.
 export const quizSlice = createSlice({
   name: 'quiz',
   initialState,
   reducers: {
     nextQuestion: (state) => {
       state.currentQuestion++;
+    },
+    increaseScore: (state) => {
+      state.score++;
     },
     resetQuiz: (state) => {
       Object.assign(state, initialState);
@@ -72,6 +78,10 @@ export const quizSlice = createSlice({
       state.error = '';
     }
   },
+  /* For handing the progress of the Primse returned by getQuestions(). This is
+    so a loading gif can be shown if questions are loading and in case of error
+    or a rejected promise, it can then be handled.
+  */
   extraReducers: (builder) => {
     builder
       .addCase(getQuestions.pending, (state) => {
@@ -88,9 +98,10 @@ export const quizSlice = createSlice({
   }
 });
 
-export const { nextQuestion, resetQuiz, resetStatusAndError } = quizSlice.actions;
+export const { nextQuestion, increaseScore, resetQuiz, resetStatusAndError } = quizSlice.actions;
 export const selectQuestions = (state) => state.quiz.questions;
 export const selectCurrentQuestion = (state) => state.quiz.currentQuestion;
+export const selectScore = (state) => state.quiz.score;
 export const selectStatus = (state) => state.quiz.status;
 export const selectError = (state) => state.quiz.error;
 

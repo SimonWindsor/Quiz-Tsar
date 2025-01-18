@@ -3,12 +3,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   setGameStage,
   selectNumQuestions,
-  selectScore, 
   resetGame } from "../../features/game/gameSlice";
-import { resetQuiz } from "../../features/quiz/quizSlice";
+import { selectScore, resetQuiz } from "../../features/quiz/quizSlice";
 
 import './ResultsScreen.css';
 
+// Where user sees their final score
 export function ResultsScreen () {
   const dispatch = useDispatch();
   const score = useSelector(selectScore);
@@ -21,6 +21,7 @@ export function ResultsScreen () {
         id="finish-btn"
         aria-label="Finish Button"
         onClick={() => {
+          // Resets relevant parts of state and returns to opening screen.
           dispatch(resetGame());
           dispatch(resetQuiz());
           dispatch(setGameStage('start'));

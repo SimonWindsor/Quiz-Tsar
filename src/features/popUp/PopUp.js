@@ -8,6 +8,10 @@ import './PopUp.css';
 
 import arrowPicture from '../../assets/arrow.png';
 
+/* This contains a pop up message and its contents. Pop up messages contain error
+  messages, affirm a correct or incorrect answer to a trivia question or confirm
+  whether or not to exit from game or game selection screen.
+*/
 export function PopUp() {
   const popUpType = useSelector(selectPopUpType);
   const popUpShowing = useSelector(selectPopUpToggle);
@@ -15,11 +19,14 @@ export function PopUp() {
   const error = useSelector(selectError);
   const dispatch = useDispatch();
 
+  // Determines the pop up type- exit, correct, incorrect or error
   const getPopUp = () => {
+    // If the pop up toggle in popUpSlice.js is false, no pop up should show
     if (!popUpShowing) {
       return;
     }
     switch (popUpType.toLowerCase()) {
+      // If an "exit" button is clicked, this pop up confirms whether to exit or not.
       case 'exit':
         return (
           <div className="exit popup">
@@ -45,6 +52,7 @@ export function PopUp() {
             </span>
           </div>
         );
+      // Affirms a correct answer.
       case 'correct':
         return (
           <div className="correct popup">
@@ -58,6 +66,7 @@ export function PopUp() {
             </button>
           </div>
         );
+      // Affirms an incorrect answer.
       case 'incorrect':
         return (
           <div className="incorrect popup">
@@ -71,6 +80,7 @@ export function PopUp() {
             </button>
           </div>
         );
+      // In case of error, this pop up should contain the error message.
       case 'error':
         return (
           <div className="error popup">
@@ -88,32 +98,44 @@ export function PopUp() {
             </button>
           </div>
         );
+      // Default pop up, something is wrong if this shows.
       default:
         return (
           <div className="default popup">
             <h3>Unknown PopUp Type</h3>
+            <h4>Something might be wrong</h4>
+            <button onClick={() => dispatch(hidePopUp())} >
+              OK
+            </button>
           </div>
         );
     }
   }
 
+  /* For "correct" or "incorrect" pop ups. If the user is answering their final
+    question in a quiz, then the game stage should transition from "quiz" to 
+    "showing-quiz-results" were the user sees their final score.
+  */
   const afterAnswered = () => {
     if (finalQuestion) {
       dispatch(hidePopUp());
       dispatch(setGameStage('showing-quiz-results'));
-      return;
+    } else {
+      dispatch(hidePopUp());
+      dispatch(nextQuestion());
     }
-
-    dispatch(hidePopUp());
-    dispatch(nextQuestion());
   }
 
+  /* If game is exited, app state should reset and the user will be directed
+    to the start of the app.
+  */
   const exitGame = () => {
     dispatch(resetGame());
     dispatch(resetQuiz());
     dispatch(setGameStage('start'));
   }
   
+  // This will deploy a pop up to the DOM.
   return (
     getPopUp()
   );
