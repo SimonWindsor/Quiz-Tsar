@@ -1,3 +1,7 @@
+/* Handles much of the opening screen, which is the heading and everything in
+  GameContainer.js
+*/
+
 @font-face {
   font-family: grand-duke;
   src: url(./assets/kremlin-grand-duke.regular.ttf);
@@ -9,6 +13,8 @@
 }
 
 #app {
+  position: relative;
+  top: 5vh; /* Offset for the top bar in mobile browser */
   height: 95vh;
   width: 100vw;
   margin: 0;
@@ -75,6 +81,7 @@ h1 {
 
 @media not (orientation: portrait) {
   #app {
+    top: 0;
     height: 100vh;
   }
 
