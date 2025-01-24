@@ -49,4 +49,3 @@ A potential future feature may be the option to play with friends. Another may b
 ## Acknowledgements
   * [Open Trivia Database](https://opentdb.com/) - Credited for their API.
   * [1001 Fonts](https://www.1001fonts.com/) - Thanks for the awesome fonts!
-  * [ChatGPT](https://chatgpt.com/) - Credited for giving me the colour pallete used in the game and also for image generation tools for the Tsar image.
