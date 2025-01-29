@@ -1,7 +1,7 @@
 # Quiz-Tsar
 
 ## About the Project
-While completing my Full Stack Development Course. I decided to create an independent React-Redux project. The title is a play on the word "quizzer". With "Quiz-Tsar" now being the title, I chose a Russian royalty aesthetic. AI was used to create the picture of the Tsar and give me a colour pallete to implement into the coding of this project. I had the project on hold until I had finished all my coursework. After I returned to the project I completed the API implementation, and the logic for the game. [Open Trivia Database](https://opentdb.com/) is being used for the trivia questions- I didn't write a single trivia question into the game myself.
+While completing my Full Stack Development Course. I decided to create an independent React-Redux project. The title is a play on the word "quizzer". With "Quiz-Tsar" now being the title, I chose a Russian royalty aesthetic. I undertook this project with a "mobile-first" approach. I had the project on hold until I had finished all my coursework. After I returned to the project I completed the API implementation, and the logic for the game. [Open Trivia Database](https://opentdb.com/) is being used for the trivia questions- I didn't write a single trivia question into the game myself.
 
 ## Features and User Interface Details
 - Simple game configuration menu- enabling users to select number of questions, difficulty, category and question type ("multiple choice" or "true or false").
