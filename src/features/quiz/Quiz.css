@@ -15,15 +15,17 @@
   position: relative;
   bottom: 2rem;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   margin: auto;
   flex-wrap: wrap;
   width: 90%;
 }
 
+/* Can't keep font size too large as some answers are long */
 .answer-btn {
   width: 100%;
-  min-height: 4rem;
+  min-height: 3.2rem;
   height: fit-content;
   margin-top: 1rem;
   font-size: clamp(15px, 0.5rem, 30px);
@@ -57,10 +59,11 @@
   }
 
   #answers {
+    flex-direction: row;
     width: 80%;
   }
   .answer-btn {
     width: 48%;
-    min-height: 1.2rem;
+    min-height: 2rem;
   }
 }
