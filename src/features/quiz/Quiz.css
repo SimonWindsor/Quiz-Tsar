@@ -22,7 +22,7 @@
 }
 
 .answer-btn {
-  width: 48%;
+  width: 100%;
   min-height: 4rem;
   height: fit-content;
   margin-top: 1rem;
@@ -60,6 +60,7 @@
     width: 80%;
   }
   .answer-btn {
+    width: 48%;
     min-height: 1.2rem;
   }
 }
