@@ -1,4 +1,5 @@
 # Quiz-Tsar
+*[Click to see this project in action](https://quiz-tsar.netlify.app/)*
 
 ## About the Project
 While completing my Full Stack Development Course. I decided to create an independent React-Redux project. The title is a play on the word "quizzer". With "Quiz-Tsar" now being the title, I chose a Russian royalty aesthetic. I undertook this project with a "mobile-first" approach. I had the project on hold until I had finished all my coursework. After I returned to the project I completed the API implementation, and the logic for the game. [Open Trivia Database](https://opentdb.com/) is being used for the trivia questions- I didn't write a single trivia question into the game myself.
@@ -27,6 +28,11 @@ Another factor was a mobile-first approached. I wanted to prioritize a mobile-fr
 
 ## Potential Future Developments
 A potential future feature may be the option to play with friends. Another may be to create a game consisting of a number of quizzes where the game tracks and compares your scores between the quizzes you play. This was a feature I thought of in the beginning but chose not to implement at first.
+
+## Running Locally
+- Clone the repo
+- Open containing folder in CLI
+- Type `npm start`
 
 ## Screenshots
 
